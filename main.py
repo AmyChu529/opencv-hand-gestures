@@ -33,6 +33,8 @@ if not cap.isOpened():
 # 提前建立主視窗並固定在左上角
 cv2.namedWindow("CV Project")
 cv2.moveWindow("CV Project", 0, 0)
+# 👉 新增這行：讓主視窗永遠置頂
+cv2.setWindowProperty("CV Project", cv2.WND_PROP_TOPMOST, 1)
 
 
 # ===== 圖片讀取區 =====
@@ -185,6 +187,9 @@ while True:
 
             safe_x, safe_y = get_safe_random_pos(state["w"], state["h"])
             cv2.moveWindow(win_name, safe_x, safe_y)
+
+            # 👉 新增這行：讓彈出來的圖片視窗也永遠置頂
+            cv2.setWindowProperty(win_name, cv2.WND_PROP_TOPMOST, 1)
 
             state["showing"] = True
 
